@@ -15,10 +15,10 @@
     <id property="uid" column="uid"/>
     <result property="username" column="username"/>
     <result property="password" column="password"/>
-    <collection property="roles" ofType="org.zero.example.shiro.model.Role">
+    <collection property="roles" ofType="com.springboot.shiro.entity.Role">
       <id property="rid" column="rid"/>
       <result property="rname" column="rname"/>
-      <collection property="permissions" ofType="org.zero.example.shiro.model.Permission">
+      <collection property="permissions" ofType="com.springboot.shiro.entity.Permission">
         <id property="pid" column="pid"/>
         <result property="name" column="name"/>
         <result property="url" column="url"/>
@@ -108,7 +108,7 @@
     where `uid` = #{uid,jdbcType=INTEGER}
   </update>
 
-  <select id="findByUserName" parameterType="string" resultMap="userMap">
+  <select id="findByUserName" resultMap="userMap">
       select u.*, r.*, p.*
       from user u
       inner join user_role ur on ur.uid = u.uid
