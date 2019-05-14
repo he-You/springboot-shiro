@@ -1,0 +1,26 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  ## 该配置节点为独立的节点，不能配置放在spring的节点下，否则导致配置无法被识别
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml #注意：一定要对应mapper映射xml文件的所在路径
+    type-aliases-package: com.springboot.shiro.entity # 注意：对应实体类的路径
