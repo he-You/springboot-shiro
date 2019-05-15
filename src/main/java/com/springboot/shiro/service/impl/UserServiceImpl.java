@@ -1,6 +1,7 @@
 package com.springboot.shiro.service.impl;
 
 import com.springboot.shiro.entity.User;
+import com.springboot.shiro.http.response.ResUser;
 import com.springboot.shiro.mapper.UserMapper;
 import com.springboot.shiro.service.UserService;
 import org.springframework.stereotype.Service;

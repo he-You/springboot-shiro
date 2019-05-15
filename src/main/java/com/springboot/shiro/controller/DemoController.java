@@ -4,7 +4,7 @@ import com.springboot.shiro.entity.Result;
 import com.springboot.shiro.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
+
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -53,11 +53,12 @@ public class DemoController {
     @RequestMapping("/loginUser")
     @ResponseBody
     public Result loginUser(@RequestBody User userInfo) {
-        UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPassword());
-        System.out.println(token);
-        Subject subject = SecurityUtils.getSubject();
+       //UsernamePasswordToken token = new UsernamePasswordToken(userInfo.getUsername(), userInfo.getPassword());
+        //System.out.println(token);
+
+        Subject subject = SecurityUtils.getSubject();//得到Subject及创建用户名/密码验证Token(即用户身份/凭证)
         try {
-            subject.login(token);
+            //subject.login(token);
             User user = (User) subject.getPrincipal();
             log.info("验证通过,进入首页");
             return new Result(true,"验证成功");

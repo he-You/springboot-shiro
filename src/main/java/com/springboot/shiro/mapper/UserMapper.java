@@ -1,7 +1,6 @@
 package com.springboot.shiro.mapper;
 
 import com.springboot.shiro.entity.User;
-import org.apache.ibatis.annotations.Param;
 
 /**
 * Created by Mybatis Generator 2019/05/14
@@ -25,5 +24,5 @@ public interface UserMapper {
      * @param username 用户名
      * @return user
      */
-    User findByUserName(@Param("username") String username);
+    User findByUserName(String username);
 }
